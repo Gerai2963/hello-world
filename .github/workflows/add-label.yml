@@ -10,6 +10,6 @@ jobs:
       uses: Gerai2963/Label-by-pr-title@v1.3
       with:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        config: 'Gerai2963/Label-by-pr-title/.github/pr_label_config.yml'
+        config: '.github/pr_label_config.yml'
 
 
