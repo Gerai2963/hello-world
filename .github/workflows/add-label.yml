@@ -7,6 +7,9 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Display PR title
-      uses: Gerai2963/Label-by-pr-title@v1.3
+      id: myLabeler
+      uses: Gerai2963/Label-by-pr-title@v1.4
       with:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+    - name: Output Labels
+      run: echo "Display my labels ${{ steps.myLabeler.output.Labels}}"
