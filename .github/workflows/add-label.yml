@@ -11,5 +11,7 @@ jobs:
       uses: Gerai2963/Label-by-pr-title@v1.4
       with:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
+        config: '.github/pr_label_config.yml'
     - name: Output Labels
       run: echo "Display my labels ${{ steps.myLabeler.output.Labels}}"
+
