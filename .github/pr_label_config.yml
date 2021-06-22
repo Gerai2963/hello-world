@@ -1,0 +1,10 @@
+feat:
+  - feat
+hotfix:
+  - hotfix
+bug:
+  - ['bugfix','bug']
+refactor:
+  - refactor
+chore:
+  - chore
