@@ -6,8 +6,11 @@ on:
 jobs:
   label_my_pr_job:
     runs-on: ubuntu-latest
+    outputs:
+      Labels: ${{steps.myLabeler.outputs.Labels}}
     steps:
     - name: Checkout
+      id: CheckOut
       uses: actions/checkout@v2
     - name: Display PR title
       id: myLabeler
@@ -25,7 +28,7 @@ jobs:
         with:
           mode: exactly
           count: 1
-          labels: ${{ steps.myLabeler.outputs.Labels}}
+          labels: ${{ needs.myLabeler.outputs.Labels}}
       - uses: mheap/github-action-required-labels@v1
         with:
           mode: exactly
