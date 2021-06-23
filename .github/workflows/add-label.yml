@@ -1,4 +1,7 @@
-on: [pull_request]
+name: Pull Request Labeler
+on:
+  pull_request:
+    types: [opened, labeled, unlabeled, synchronize]
 
 jobs:
   label_my_pr_job:
@@ -14,4 +17,19 @@ jobs:
         config: '.github/pr_label_config.yml'
     - name: Output Labels
       run: echo "Display my labels ${{ steps.myLabeler.outputs.Labels}}"
+  required_label:
+    needs: label_my_pr_job
+    runs-on: ubuntu-latest
+    steps:
+      - uses: mheap/github-action-required-labels@v1
+        with:
+          mode: exactly
+          count: 1
+          labels: ${{ steps.myLabeler.outputs.Labels}}
+      - uses: mheap/github-action-required-labels@v1
+        with:
+          mode: exactly
+          count: 0
+          labels: "do-not-merge"
+
 
