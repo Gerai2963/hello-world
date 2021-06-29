@@ -10,7 +10,7 @@ jobs:
     - name: Checkout
       id: CheckOut
       uses: actions/checkout@v2
-    - name: Display PR title
+    - name: Display PR title now
       id: myLabeler
       uses: Gerai2963/Label-by-pr-title@v1.5
       with:
