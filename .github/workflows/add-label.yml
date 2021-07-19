@@ -23,12 +23,12 @@ jobs:
     needs: label_my_pr_job
     runs-on: ubuntu-latest
     steps:
-      - uses: mheap/github-action-required-labels@v1.1
+      - uses: mheap/github-action-required-labels@v1
         with:
           mode: exactly
           count: 1
           labels: ${{needs.label_my_pr_job.outputs.MyLabels}}
-      - uses: mheap/github-action-required-labels@v1.1
+      - uses: mheap/github-action-required-labels@v1
         with:
           mode: exactly
           count: 0
