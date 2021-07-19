@@ -25,7 +25,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: echo labels
-      run: echo "${{ toJson(github.event.pull_request.labels.*.name) }}"
+      run:  |
+          echo "${{ toJson(github.event.pull_request.labels) }}"
+          echo "${{ toJson(github.event.pull_request.labels.*.names) }}"
   required_label:
     needs: [label_my_pr_job, show_labels]
     runs-on: ubuntu-latest
