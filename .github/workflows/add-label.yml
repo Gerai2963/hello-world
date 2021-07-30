@@ -19,24 +19,9 @@ jobs:
       run: echo "Display my labels ${{ steps.myLabeler.outputs.Labels}}"
     outputs:
       MyLabels: ${{steps.myLabeler.outputs.Labels}}
-  show_labels:
-    needs: label_my_pr_job
-    name: debug
-    runs-on: ubuntu-latest
-    steps:
-    - name: echo labels
-      run:  |
-          echo "${{ toJson(github.event.pull_request.labels) }}"
-          echo "${{ toJson(github.event.pull_request.labels.*.names) }}"
   required_label:
-    needs: [label_my_pr_job, show_labels]
     runs-on: ubuntu-latest
     steps:
-      - uses: mheap/github-action-required-labels@v1
-        with:
-          mode: exactly
-          count: 1
-          labels: ${{needs.label_my_pr_job.outputs.MyLabels}}
       - uses: mheap/github-action-required-labels@v1
         with:
           mode: exactly
