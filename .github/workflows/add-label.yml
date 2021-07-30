@@ -12,7 +12,7 @@ jobs:
       uses: actions/checkout@v2
     - name: Display PR title now
       id: myLabeler
-      uses: Zegocover/Label-by-pr-title/tree/add-label-to-repo@v1.5
+      uses: Zegocover/Label-by-pr-title@add-label-to-repo
       with:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
     - name: Output Labels
