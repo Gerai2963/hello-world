@@ -21,6 +21,7 @@ jobs:
       MyLabels: ${{steps.myLabeler.outputs.Labels}}
   required_label:
     runs-on: ubuntu-latest
+    needs: [label_my_pr_job]
     steps:
       - uses: mheap/github-action-required-labels@v1
         with:
