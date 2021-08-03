@@ -1,15 +1,32 @@
-on: [pull_request]
+name: Pull Request Labeler
+on:
+  pull_request:
+    types: [opened, labeled, unlabeled, synchronize]
 
 jobs:
   label_my_pr_job:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-latest    
     steps:
     - name: Checkout
+      id: CheckOut
       uses: actions/checkout@v2
-    - name: Display PR title
-      uses: Gerai2963/Label-by-pr-title@v1.3
+    - name: Display PR title now
+      id: myLabeler
+      uses: Zegocover/Label-by-pr-title@v1.6
       with:
         GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
-        config: '.github/pr_label_config.yml'
+    - name: Output Labels
+      run: echo "Display my labels ${{ steps.myLabeler.outputs.Labels}}"
+    outputs:
+      MyLabels: ${{steps.myLabeler.outputs.Labels}}
+  required_label:
+    runs-on: ubuntu-latest
+    needs: [label_my_pr_job]
+    steps:
+      - uses: mheap/github-action-required-labels@v1
+        with:
+          mode: exactly
+          count: 0
+          labels: "do-not-merge"
 
 
