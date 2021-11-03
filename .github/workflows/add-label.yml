@@ -10,6 +10,8 @@ jobs:
     - name: Checkout
       id: CheckOut
       uses: actions/checkout@v2
+      with:
+        persist-credentials: false
     - name: Display PR title now
       id: myLabeler
       uses: Zegocover/Label-by-pr-title@main
