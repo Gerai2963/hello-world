@@ -14,5 +14,5 @@ jobs:
       - uses: sohill-patel/playwright-playground@add-docker
       - name: Install operating system dependencies
         run: npm install
-      - name: Run your tests
+      - name: Run your test
         run: npm test
