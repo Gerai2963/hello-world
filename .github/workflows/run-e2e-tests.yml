@@ -1,4 +1,4 @@
-name: Playwright tests
+name: Salesforce Playwright tests
 on: 
   pull_request:
 jobs:
